@@ -1,23 +1,42 @@
-Technologies Used:
+## Design:
 
-Java 17: Stable, OOP language with extensive library support.
-Spring Boot: Facilitates building production-ready applications and integrates well with JPA for data access.
-PostgreSQL: Powerful, open-source object-relational database system with a strong emphasis on extensibility and standards compliance.
-Trade-offs:
+### Java 17
+- I've never tried, so I want to try
 
-Spring Boot vs Micronaut/Quarkus: Chose Spring Boot for its mature ecosystem and vast community support.
-PostgreSQL vs Other Databases: Chose PostgreSQL for its robustness, extensibility, and being open source. It’s a versatile RDBMS compared to others like MySQL or SQLite.
+### Spring Boot
+- I've never tried, so I want to try
+
+### PostgreSQL
+- I am more familiar with postgreSQL, as I already have a container running for postgres 12 
+
 Design Patterns:
 
-MVC: Used in the architecture, Model for data and logic, View is not included since it's backend, and Controller for API endpoints.
-Repository Pattern: For simplifying database operations.
-Shortcomings and Limitations due to Time Pressure:
+The decision to use both Order and OrderLine entities is based on the modeling of the real-world shopping and e-commerce processes.
+Reasons:
+- ### Multiple Products in a Single Order
+    Each product in that order can have a different quantity.
+An OrderLine represents a single line item in an order. For example, "3 units of Product A" would be one order line, and "2 units of Product B" would be another order line within the same order.
 
-No authentication or authorization added for admin operations.
-Error handling and validations are minimal.
-Lack of unit and integration tests.
-Not designed with high scalability in mind.
-When transitioning to PostgreSQL, remember to set up a PostgreSQL instance, either locally or on a server, create the hardwarestore database, and ensure that the app can connect to it using the credentials provided in the application.properties file.
+- ### Normalization:
+  Relational database design to minimize redundancy and dependency by organizing fields and table of a database
+
+- ### Historical Accuracy
+  Capture the price of the product at the exact time the order was placed
+
+- ### Flexibility and Scalability
+  Allows for greater flexibility in adding or changing features. For instance, if in the future, there's a requirement to apply a discount on a particular product in an order, you can do so at the OrderLine level
+
+### MVC: 
+- Model for data and logic, View is not included since it's backend, and Controller for API endpoints.
+### Repository Pattern: 
+- For simplifying database operations.
+
+### Shortcomings and Limitations due to Time Pressure:
+- No authentication or authorization added for admin operations.
+- Error handling and validations are minimal.
+- Lack of unit and integration tests.
+- Not designed with high scalability in mind.
+- When transitioning to PostgreSQL, remember to set up a PostgreSQL instance, either locally or on a server, create the hardwarestore database, and ensure that the app can connect to it using the credentials provided in the application.properties file.
 
 
 
