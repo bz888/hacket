@@ -39,6 +39,73 @@ An OrderLine represents a single line item in an order. For example, "3 units of
 - When transitioning to PostgreSQL, remember to set up a PostgreSQL instance, either locally or on a server, create the hardwarestore database, and ensure that the app can connect to it using the credentials provided in the application.properties file.
 
 
+Run:
+`gradlew clean build`
+`gradlew bootRun`
 
 
+#### Requests:
 
+Orders: 
+-  All Orders `GET` `/api/orders`
+- Create order `POST` `/api/orders` 
+request body example:
+```json
+{
+    "user": {
+        "id": 1,
+        "username": "test",
+        "role": "CUSTOMER"
+    },
+    "orderLines": [
+        {
+            "product": {
+                "id": 1,
+                "name": "item1",
+                "price": 1.99
+            },
+            "quantity": 1
+        },
+        {
+            "product": {
+                "id": 2,
+                "name": "item2",
+                "price": 2.11
+            },
+            "quantity": 69
+        }
+    ]
+}
+```
+- Get Order by ID `GET` `/api/orders/{id}`
+- Get Order line by Order ID `GET` `/api/orders/{id}/orderlines`
+- Update Order `PUT` `/api/orders/{id}` (Broken)
+- Delete Order `DELETE` `/api/orders/{id}`
+
+Products: 
+- Get All Products `GET` `/api/products`
+- Create Product (Admin only)`POST` `/api/products`
+Example request body:
+```json
+{
+    "name": "hammer",
+    "price": 900
+}
+```
+- Delete Product by ID (Admin only)`DELETE` `/api/products/{id}`
+- Update Product by ID (Admin ony)`PUT` `/api/products/{id}`
+
+Users:
+- Get User by ID `GET` `/api/users/{id}`
+- Get User by username (Kind of redundant) `GET` `/api/users/username/{username}` 
+- Create User `POST` `/api/users`
+Example request body
+```json
+{
+    "username": "hammer",
+    "password": "c",
+    "role": "ADMIN"
+}
+```
+- Delete User by Id `DELETE` `/api/users/{id}`
+- Update User by ID `PUT` `/api/users/{id}`
