@@ -40,9 +40,10 @@ An OrderLine represents a single line item in an order. For example, "3 units of
 
 
 Run:
-`gradlew clean build`
-`gradlew bootRun`
 
+1. Ensure postgres is running  (if using docker, can use `docker-compose up` (for Postgres in docker)
+2. `gradlew clean build`
+3. `gradlew bootRun` (or you can run from ide, from `src.main.java.Main`)
 
 #### Requests:
 
