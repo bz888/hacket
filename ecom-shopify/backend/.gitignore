@@ -18,9 +18,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-ecom-shopify/backend/.idea
 ecom-shopify/.idea
-.idea
 *.iws
 *.iml
 *.ipr
