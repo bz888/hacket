@@ -11,6 +11,10 @@ public class Product {
     private Long id;
     private String name;
     private BigDecimal price;
+    // what if price updates
+    // should add values to this
+    // e.g. lastUpdated
+    // 
 
     public Product() {}
 
